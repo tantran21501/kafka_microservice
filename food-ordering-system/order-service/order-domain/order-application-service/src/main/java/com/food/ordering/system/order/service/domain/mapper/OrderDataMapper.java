@@ -39,11 +39,11 @@ public class OrderDataMapper {
                 .items(orderItemsToOrderItemEntities(createOrderCommand.getItems()))
                 .build();
     }
-    public CreateOrderResponse orderToCreateOrderResponse(Order order){
+    public CreateOrderResponse orderToCreateOrderResponse(Order order, String messsage){
         return CreateOrderResponse.builder()
                 .orderTrackingId(order.getTrackingId().getValue())
                 .orderStatus(order.getOrderStatus())
-
+                .message(messsage)
                 .build();
     }
 
