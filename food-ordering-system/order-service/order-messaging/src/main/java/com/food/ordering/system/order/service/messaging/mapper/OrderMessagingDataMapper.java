@@ -18,8 +18,9 @@ public class OrderMessagingDataMapper {
 
     public PaymentRequestAvroModel orderCreatedEventToPaymentRequestAvroModel(OrderCreatedEvent orderCreatedEvent){
         Order order =orderCreatedEvent.getOrder();
-            return PaymentRequestAvroModel.newBuilder()
-                    .setOrderId(UUID.randomUUID().toString())
+        String uuid = UUID.randomUUID().toString();
+        PaymentRequestAvroModel paymentRequestAvroModel = PaymentRequestAvroModel.newBuilder()
+                    .setId(uuid)
                     .setSagaId("")
                     .setCustomerId(order.getCustomerId().getValue().toString())
                     .setOrderId(order.getId().getValue().toString())
@@ -27,12 +28,15 @@ public class OrderMessagingDataMapper {
                     .setCreatedAt(orderCreatedEvent.getCreatedAt().toInstant())
                     .setPaymentOrderStatus(PaymentOrderStatus.PENDING)
                     .build();
+        System.out.println(paymentRequestAvroModel);
+        return paymentRequestAvroModel;
     }
     public PaymentRequestAvroModel orderCancelledEventToPaymentRequestAvroModel(OrderCancelledEvent orderCancelledEvent){
         Order order =orderCancelledEvent.getOrder();
+        String uuid = UUID.randomUUID().toString();
         return PaymentRequestAvroModel.newBuilder()
-                .setOrderId(UUID.randomUUID().toString())
-                .setSagaId("")
+                .setId(uuid)
+                .setSagaId("".toString())
                 .setCustomerId(order.getCustomerId().getValue().toString())
                 .setOrderId(order.getId().getValue().toString())
                 .setPrice(order.getPrice().getAmount())
@@ -45,7 +49,7 @@ public class OrderMessagingDataMapper {
         Order order =orderPaidEvent.getOrder();
         return RestaurantApprovalRequestAvroModel.newBuilder()
                 .setId(UUID.randomUUID().toString())
-                .setSagaId("")
+                .setSagaId("".toString())
                 .setOrderId(order.getId().getValue().toString())
                 .setRestaurantId(order.getRestaurantId().getValue().toString())
                 .setOrderId(order.getId().getValue().toString())

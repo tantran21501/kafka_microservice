@@ -31,7 +31,7 @@ public class OrderDataAccessMapper {
                 .price(order.getPrice().getAmount())
                 .items(orderItemToOrderItemEntities(order.getItems()))
                 .orderStatus(order.getOrderStatus())
-                .failureMessage(order.getFailureMessages() !=null ?
+                .failureMessages(order.getFailureMessages() !=null ?
                         String.join(FAILURE_MESSAGE_DELIMITER,order.getFailureMessages()): "")
                 .build();
         orderEntity.getAddress().setOrder(orderEntity);
@@ -39,7 +39,7 @@ public class OrderDataAccessMapper {
         return  orderEntity;
     }
     public Order orderEntityToOrder(OrderEntity orderEntity ){
-        return Order.builder()
+        Order order =  Order.builder()
                 .orderId(new OrderId(orderEntity.getId()))
                 .customerId(new CustomerId(orderEntity.getCustomerId()))
                 .restaurantId(new RestaurantId(orderEntity.getRestaurantId()))
@@ -48,10 +48,12 @@ public class OrderDataAccessMapper {
                 .items(orderItemEntitiesToOrderItems(orderEntity.getItems()))
                 .trackingId(new TrackingId(orderEntity.getTrackingId()))
                 .orderStatus(orderEntity.getOrderStatus())
-                .failureMessages(orderEntity.getFailureMessage().isEmpty() ? new ArrayList<>() :
-                        new ArrayList<>(Arrays.asList(orderEntity.getFailureMessage()
+                .failureMessages(orderEntity.getFailureMessages().isEmpty() ? new ArrayList<>() :
+                        new ArrayList<>(Arrays.asList(orderEntity.getFailureMessages()
                                 .split(FAILURE_MESSAGE_DELIMITER))))
                 .build();
+        System.out.println(order);
+        return order;
     }
 
     private List<OrderItem> orderItemEntitiesToOrderItems(List<OrderItemEntity> items) {

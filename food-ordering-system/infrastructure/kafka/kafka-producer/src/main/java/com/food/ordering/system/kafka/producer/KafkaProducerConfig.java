@@ -25,7 +25,6 @@ public class KafkaProducerConfig<K extends Serializable, V extends SpecificRecor
         this.kafkaConfigData = kafkaConfigData;
         this.kafkaProducerConfigData = kafkaProducerConfigData;
     }
-    @Bean
     public Map<String, Object> producerConfig(){
         Map<String, Object> props = new HashMap<>();
         props.put(ProducerConfig.BOOTSTRAP_SERVERS_CONFIG, kafkaConfigData.getBootstrapServers());
@@ -45,6 +44,7 @@ public class KafkaProducerConfig<K extends Serializable, V extends SpecificRecor
     public ProducerFactory<K,V> producerFactory(){
         return new DefaultKafkaProducerFactory<>(producerConfig());
     }
+    @Bean
     public KafkaTemplate<K,V> kafkaTemplate(){
         return new KafkaTemplate<>(producerFactory());
     }
