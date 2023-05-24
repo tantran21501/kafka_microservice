@@ -20,8 +20,6 @@ public class CreditEntryRepositoryImpl implements CreditEntryRepository {
         this.creditEntryDataAccessMapper = creditEntryDataAccessMapper;
     }
 
-
-
     @Override
     public CreditEntry save(CreditEntry creditEntry) {
         return creditEntryDataAccessMapper.creditEntryEntityToCreditEntry(
@@ -30,7 +28,6 @@ public class CreditEntryRepositoryImpl implements CreditEntryRepository {
                 )
         );
     }
-
     @Override
     public Optional<CreditEntry> findByCustomerId(CustomerId customerId) {
         return creditEntryJpaRepository.findByCustomerId(customerId.getValue())
