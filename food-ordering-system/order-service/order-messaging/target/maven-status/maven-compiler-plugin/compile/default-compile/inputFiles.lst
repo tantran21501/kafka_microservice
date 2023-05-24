@@ -2,6 +2,5 @@
 /Users/tan.tran2/Desktop/kafka/food-ordering-system/order-service/order-messaging/src/main/java/com/food/ordering/system/order/service/messaging/mapper/OrderMessagingDataMapper.java
 /Users/tan.tran2/Desktop/kafka/food-ordering-system/order-service/order-messaging/src/main/java/com/food/ordering/system/order/service/messaging/listener/kafka/RestaurantApprovalResponseKafkaListener.java
 /Users/tan.tran2/Desktop/kafka/food-ordering-system/order-service/order-messaging/src/main/java/com/food/ordering/system/order/service/messaging/publisher/kafka/PayOrderKafkaMessagePublisher.java
-/Users/tan.tran2/Desktop/kafka/food-ordering-system/order-service/order-messaging/src/main/java/com/food/ordering/system/order/service/messaging/publisher/kafka/OrderKafkaMessageHelper.java
 /Users/tan.tran2/Desktop/kafka/food-ordering-system/order-service/order-messaging/src/main/java/com/food/ordering/system/order/service/messaging/listener/kafka/PaymentResponseKafkaListener.java
 /Users/tan.tran2/Desktop/kafka/food-ordering-system/order-service/order-messaging/src/main/java/com/food/ordering/system/order/service/messaging/publisher/kafka/CancelOrderKafkaMessagePublisher.java
